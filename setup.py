@@ -14,7 +14,6 @@ setup(
         "write_to": "rst2h5p/version.py",
     },
     long_description=long_description,
-    long_description_content_type='text/x-rst',
     url='https://github.com/wallento/rst2h5p',
     author="Stefan Wallentowitz",
     author_email='stefan.wallentowitz@hm.edu',
