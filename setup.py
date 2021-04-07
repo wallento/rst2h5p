@@ -30,6 +30,7 @@ setup(
     ],
     install_requires=[
         "docutils",
-        "pygments"
+        "pygments",
+        "requests"
     ]
 )
