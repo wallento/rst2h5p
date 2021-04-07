@@ -153,7 +153,7 @@ class CoursePresentationTranslator(html5_polyglot.HTMLTranslator):
         if self.special:
             self.take_body()
         else:
-            super().depart_list_item(node)
+            super().visit_list_item(node)
     def depart_list_item(self, node):
         if self.special:
             self.special.add_option(self.take_body())
