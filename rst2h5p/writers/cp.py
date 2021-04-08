@@ -5,6 +5,7 @@ import json
 from docutils.writers import html5_polyglot
 
 from ..elements import AdvancedText
+from ..utils.htmlfix import lowercss
 from .visitor import VisitorSpecialSingleChoice, VisitorSpecialMultiChoice
 
 class Slide():
@@ -159,4 +160,7 @@ class CoursePresentationTranslator(html5_polyglot.HTMLTranslator):
             self.special.add_option(self.take_body())
         else:
             super().depart_list_item(node)
-
+    def depart_literal_block(self, node):
+        super().depart_literal_block(node)
+        if hasattr(self.settings, "css-static-style"):
+            self.body = lowercss(self.body, getattr(self.settings, "css-static-style"))

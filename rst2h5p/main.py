@@ -30,6 +30,14 @@ def main(args = sys.argv[1:]):
 
     args = parser.parse_args(args)
 
+    settings = {}
+    settings["syntax_highlight"] = "short"
+    settings["css-static-style"] = {
+        "pre.code": {
+            ".gh": ["color: #000080", "font-weight: bold"],
+        }
+    }
+
     req = requests.get("https://api.h5p.org/v1/content-types/{}".format(formats[args.format].hubname))
     if req.status_code != 200:
         print("Cannot download content type", file=sys.stderr)
@@ -125,7 +133,7 @@ def main(args = sys.argv[1:]):
                 elif not item.filename.startswith("content/") and not item.filename == "h5p.json":
                     zip.writestr(item, hubzip.read(item.filename))
 
-        parts = publish_parts(source=args.input.read(), writer=formats[args.format].writer(), settings_overrides={"syntax_highlight": "short"})
+        parts = publish_parts(source=args.input.read(), writer=formats[args.format].writer(), settings_overrides=settings)
 
         for file, content in parts.items():
             zip.writestr(file, content)
