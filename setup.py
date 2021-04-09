@@ -8,7 +8,7 @@ long_description = (here / 'README.rst').read_text(encoding='utf-8')
 setup(
     name='rst2h5p',
     description="Generate HTML5 Packages (H5P) from reStructuredText",
-    packages=["rst2h5p"],
+    packages=find_packages(),
     use_scm_version={
         "relative_to": __file__,
         "write_to": "rst2h5p/version.py",
